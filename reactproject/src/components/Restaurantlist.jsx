@@ -1,12 +1,15 @@
 import React from "react";
+//import { useState } from "react";
 
-function Restaurantlist() {
+function Restaurantlist({ ravintoladata }) {
+  console.log(ravintoladata);
+  console.log(ravintoladata[0].nameof);
   return (
     <>
       <tr>
-        <th>1</th>
-        <td>Mark</td>
-        <td>Otto</td>
+        <th>{ravintoladata[0].nameof}</th>
+        <td>{ravintoladata[0].address}</td>
+        <td>testi</td>
         <td>@mdo</td>
       </tr>
     </>

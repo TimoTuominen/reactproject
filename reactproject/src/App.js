@@ -1,11 +1,12 @@
 import "./App.css";
 import Header from "./components/Header";
 import Restaurantlist from "./components/Restaurantlist";
+import { useState } from "react";
+import ravintoladatahaku from "./data/getrestaurantdata";
 
 function App() {
-  const nimi = "Ravintolan Nimi";
-  const osoite = "Osoite tulee tähän";
-  const tyypppi = "Ravintolan tyyppi";
+  const [ravintoladata, setravintoladata] = useState(ravintoladatahaku);
+
   return (
     <>
       <Header />
@@ -20,7 +21,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          <Restaurantlist />
+          <Restaurantlist ravintoladata={ravintoladata} />
         </tbody>
       </table>
       <script
