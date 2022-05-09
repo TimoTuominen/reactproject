@@ -20,10 +20,13 @@ function App() {
     fetchData();
   }, []);
 
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   const handleClick = (event) => {
     event.preventDefault();
+    fetchData();
   };
 
   return (
