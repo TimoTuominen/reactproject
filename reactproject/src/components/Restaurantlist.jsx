@@ -1,17 +1,19 @@
 import React from "react";
+import Restaurant from "./Restaurant";
 //import { useState } from "react";
 
 function Restaurantlist({ ravintoladata }) {
+  if (!ravintoladata || ravintoladata.length === 0) {
+    return <p>Ei ravintolatietoja</p>;
+  }
+
   console.log(ravintoladata);
   console.log(ravintoladata[0].nameof);
   return (
     <>
-      <tr>
-        <th>{ravintoladata[0].nameof}</th>
-        <td>{ravintoladata[0].address}</td>
-        <td>testi</td>
-        <td>@mdo</td>
-      </tr>
+      {ravintoladata.map((item) => (
+        <Restaurant key={item.id} item={item} />
+      ))}
     </>
   );
 }
