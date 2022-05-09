@@ -3,11 +3,11 @@ import React from "react";
 function Restaurant({ item }) {
   return (
     <>
-      <tr>
+      <tr key={item._id}>
         <th>{item.name}</th>
+        <td>{item.borough}</td>
         <td>{item.cuisine}</td>
-        <td>testi</td>
-        <td>@mdo</td>
+        <td>{item._id}</td>
       </tr>
     </>
   );
