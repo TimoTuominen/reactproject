@@ -4,8 +4,8 @@ function Restaurant({ item }) {
   return (
     <>
       <tr>
-        <th>{item.nameof}</th>
-        <td>{item.address}</td>
+        <th>{item.name}</th>
+        <td>{item.cuisine}</td>
         <td>testi</td>
         <td>@mdo</td>
       </tr>

@@ -1,5 +1,29 @@
-import { useState } from "react";
+/*import { useState, useEffect } from "react";
 
+const [ravintoladatahaku, setravintoladatahaku] = useState([]);
+
+//const Ravintoladatahaku = () => {
+//const [ravintoladatahaku1, setravintoladatahaku1] = useState([]);
+const fetchData = async () => {
+  const response = await fetch("192.168.0.100:8000/api/restaurant");
+  const data = await response.json();
+  console.log(data);
+  setravintoladatahaku(data);
+};
+
+return (
+      <div>
+        {users.length > 0 && (
+          <ul>
+            {users.map(user => (
+              <li key={user.id}>{user.name}</li>
+            ))}
+          </ul>
+        )} 
+      </div>
+    )
+    
+};
 const ravintoladatahaku = [
   {
     address: "jokukatu",
@@ -24,4 +48,4 @@ const ravintoladatahaku = [
   },
 ];
 
-export default ravintoladatahaku;
+export default ravintoladatahaku; */

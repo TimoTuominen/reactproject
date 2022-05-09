@@ -7,8 +7,8 @@ function Restaurantlist({ ravintoladata }) {
     return <p>Ei ravintolatietoja</p>;
   }
 
-  console.log(ravintoladata);
-  console.log(ravintoladata[0].nameof);
+  //console.log(ravintoladata);
+  //console.log(ravintoladata.name);
   return (
     <>
       {ravintoladata.map((item) => (

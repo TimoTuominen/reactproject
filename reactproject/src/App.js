@@ -1,12 +1,24 @@
 import "./App.css";
 import Header from "./components/Header";
 import Restaurantlist from "./components/Restaurantlist";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ravintoladatahaku from "./data/getrestaurantdata";
 //import Restaurant from "./components/Restaurant";
 
 function App() {
-  const [ravintoladata, setravintoladata] = useState(ravintoladatahaku);
+  const [ravintoladata, setravintoladata] = useState([]);
+
+  const fetchData = async () => {
+    const response = await fetch("http://192.168.0.101:8000/api/restaurant");
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    setravintoladata(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
