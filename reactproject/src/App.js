@@ -6,7 +6,8 @@ import ravintoladatahaku from "./data/getrestaurantdata";
 //import Restaurant from "./components/Restaurant";
 
 function App() {
-  const [ravintoladata, setravintoladata] = useState([]);
+  let [ravintoladata, setravintoladata] = useState([]);
+  const [query, setQuery] = useState("");
 
   const fetchData = async () => {
     const response = await fetch("http://192.168.0.101:8000/api/restaurant");
@@ -20,8 +21,20 @@ function App() {
     fetchData();
   }, []);
 
+  const fetchData2 = async () => {
+    // const query = event.target.value;
+    const response = await fetch(
+      `http://192.168.0.101:8000/api/restaurant/findbyid/${query}`
+    );
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    setravintoladata(data);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    fetchData2();
   };
 
   const handleClick = (event) => {
@@ -41,8 +54,8 @@ function App() {
             <label id="label1">Search for a restaurant ID: </label>
             <input
               type="search"
-              //value={query}
-              //onChange={(event) => setQuery(event.target.value)}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
               className="form-control"
               name="query"
               id="input1"
