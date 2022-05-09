@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Restaurantlist from "./components/Restaurantlist";
 import { useState } from "react";
 import ravintoladatahaku from "./data/getrestaurantdata";
-import Restaurant from "./components/Restaurant";
+//import Restaurant from "./components/Restaurant";
 
 function App() {
   const [ravintoladata, setravintoladata] = useState(ravintoladatahaku);
