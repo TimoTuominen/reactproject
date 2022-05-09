@@ -1,6 +1,5 @@
 import React from "react";
 import Restaurant from "./Restaurant";
-//import { useState } from "react";
 
 function Restaurantlist({ ravintoladata }) {
   if (!ravintoladata || ravintoladata.length === 0) {

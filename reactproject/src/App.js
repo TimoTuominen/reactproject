@@ -2,8 +2,6 @@ import "./App.css";
 import Header from "./components/Header";
 import Restaurantlist from "./components/Restaurantlist";
 import { useState, useEffect } from "react";
-import ravintoladatahaku from "./data/getrestaurantdata";
-//import Restaurant from "./components/Restaurant";
 
 function App() {
   let [ravintoladata, setravintoladata] = useState([]);
@@ -22,7 +20,6 @@ function App() {
   }, []);
 
   const fetchData2 = async () => {
-    // const query = event.target.value;
     const response = await fetch(
       `http://192.168.0.101:8000/api/restaurant/findbyid/${query}`
     );
@@ -30,6 +27,15 @@ function App() {
     const data = await response.json();
     console.log(data);
     setravintoladata(data);
+  };
+
+  const deleteData = async () => {
+    const response = await fetch(
+      `http://192.168.0.101:8000/api/restaurant/delete/${query}`,
+      { method: "DELETE" }
+    );
+    const data = await response.json();
+    console.log(data);
   };
 
   const handleSubmit = (event) => {
@@ -40,6 +46,11 @@ function App() {
   const handleClick = (event) => {
     event.preventDefault();
     fetchData();
+  };
+
+  const handleClick2 = (event) => {
+    event.preventDefault();
+    deleteData();
   };
 
   return (
@@ -72,6 +83,14 @@ function App() {
               onClick={handleClick}
             >
               Reset
+            </button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              id="button3"
+              onClick={handleClick2}
+            >
+              Delete
             </button>
           </div>
         </form>
