@@ -84,6 +84,7 @@ function App() {
   const handleSubmit2 = (event) => {
     event.preventDefault();
     addData();
+    alert("Tiedot lisätty");
   };
 
   // Kaikkien (15 ensimmäisen) tietueen haku
@@ -96,12 +97,14 @@ function App() {
   const handleClick2 = (event) => {
     event.preventDefault();
     deleteData();
+    alert("Tiedot poistettu");
   };
 
   // Tietueen päivitys
   const handleClick3 = (event) => {
     event.preventDefault();
     updateData();
+    alert("Tiedot päivitetty");
   };
 
   //Lomakkeen HTML + react
