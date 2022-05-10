@@ -40,6 +40,7 @@ function App() {
       reqoptions
     );
     const data = await response.json();
+    console.log(data);
   };
 
   const deleteData = async () => {
@@ -57,10 +58,11 @@ function App() {
       headers: { "Content-Type": "application/json" },
     };
     const response = await fetch(
-      `http://localhost:8000/api/restaurant/add/${query}/${query2}`,
+      `http://localhost:8000/api/restaurant/add/${query3}/${query4}/${query5}`,
       reqoptions2
     );
     const data = await response.json();
+    console.log(data);
   };
 
   const handleSubmit = (event) => {
@@ -96,8 +98,8 @@ function App() {
           <h1>Reastaurant list</h1>
         </div>
         <div>
-          <div class="row">
-            <div class="col-md">
+          <div className="row">
+            <div className="col-md">
               <form onSubmit={handleSubmit}>
                 <div className="form-group" id="group2">
                   <label id="label1">Search for a restaurant ID: </label>
@@ -157,38 +159,38 @@ function App() {
                 </div>
               </form>
             </div>
-            <div class="col-md">
+            <div className="col-md">
               <form onSubmit={handleSubmit2}>
                 <div className="form-group" id="group2">
-                  <label id="label1">Search for a restaurant ID: </label>
+                  <label id="label1">Restaurant name: </label>
                   <input
                     type="search"
                     value={query3}
                     onChange={(event) => setQuery3(event.target.value)}
                     className="form-control"
-                    name="query"
+                    name="query3"
                     id="input1"
                   />
                 </div>
                 <div className="form-group" id="group2">
-                  <label id="label1">Restauraunt ID for update: </label>
+                  <label id="label1">Borough</label>
                   <input
                     type="text"
                     value={query4}
                     onChange={(event) => setQuery4(event.target.value)}
                     className="form-control"
-                    name="query2"
+                    name="query4"
                     id="input2"
                   />
                 </div>
                 <div className="form-group" id="group2">
-                  <label id="label1">Restauraunt ID for update: </label>
+                  <label id="label1">Restauraunt ID: </label>
                   <input
                     type="text"
                     value={query5}
                     onChange={(event) => setQuery5(event.target.value)}
                     className="form-control"
-                    name="query2"
+                    name="query5"
                     id="input2"
                   />
                 </div>
