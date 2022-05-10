@@ -4,6 +4,7 @@ import Restaurantlist from "./components/Restaurantlist";
 import { useState, useEffect } from "react";
 
 function App() {
+  // Luodaan "hookit" lomakkeen kenttiä varten
   let [ravintoladata, setravintoladata] = useState([]);
   const [query, setQuery] = useState("");
   const [query2, setQuery2] = useState("");
@@ -11,16 +12,19 @@ function App() {
   const [query4, setQuery4] = useState("");
   const [query5, setQuery5] = useState("");
 
+  // Haku 15:sta ensimmäistä tietuetta varten
   const fetchData = async () => {
     const response = await fetch("http://localhost:8000/api/restaurant");
     const data = await response.json();
     setravintoladata(data);
   };
 
+  // Haetaan tiedot useEffectin kuatta sivun latautusessa ensimmäisellä renderöintikerralla
   useEffect(() => {
     fetchData();
   }, []);
 
+  // Datan haku ID:n perusteella
   const fetchData2 = async () => {
     const response = await fetch(
       `http://localhost:8000/api/restaurant/findbyid/${query}`
@@ -29,6 +33,7 @@ function App() {
     setravintoladata(data);
   };
 
+  // Tietojen päivitys
   const updateData = async () => {
     const reqoptions = {
       method: "PUT",
@@ -43,6 +48,7 @@ function App() {
     console.log(data);
   };
 
+  // Tietojen poisto
   const deleteData = async () => {
     const response = await fetch(
       `http://localhost:8000/api/restaurant/delete/${query}`,
@@ -52,6 +58,7 @@ function App() {
     console.log(data);
   };
 
+  // Tietojen lisäys
   const addData = async () => {
     const reqoptions2 = {
       method: "POST",
@@ -65,31 +72,39 @@ function App() {
     console.log(data);
   };
 
+  // Tapahtumien käsittely, mitä ajetaan minkäkin tapahtuman yhteydessä
+
+  // Haku ID:llä
   const handleSubmit = (event) => {
     event.preventDefault();
     fetchData2();
   };
 
+  // Tietueen lisäsys
   const handleSubmit2 = (event) => {
     event.preventDefault();
     addData();
   };
 
+  // Kaikkien (15 ensimmäisen) tietueen haku
   const handleClick = (event) => {
     event.preventDefault();
     fetchData();
   };
 
+  // Tietueen poisto
   const handleClick2 = (event) => {
     event.preventDefault();
     deleteData();
   };
 
+  // Tietueen päivitys
   const handleClick3 = (event) => {
     event.preventDefault();
     updateData();
   };
 
+  //Lomakkeen HTML + react
   return (
     <>
       <Header />

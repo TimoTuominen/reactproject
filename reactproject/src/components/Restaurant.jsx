@@ -1,6 +1,7 @@
 import React from "react";
 
 function Restaurant({ item }) {
+  // Lisätään taulukkoon MAP:in kanssa eritelly taulukon osiot
   return (
     <>
       <tr key={item._id}>
