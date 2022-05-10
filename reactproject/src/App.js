@@ -6,12 +6,13 @@ import { useState, useEffect } from "react";
 function App() {
   let [ravintoladata, setravintoladata] = useState([]);
   const [query, setQuery] = useState("");
+  const [query2, setQuery2] = useState("");
 
   const fetchData = async () => {
-    const response = await fetch("http://192.168.0.101:8000/api/restaurant");
-    console.log(response);
+    const response = await fetch("http://192.168.1.156:8000/api/restaurant");
+
     const data = await response.json();
-    console.log(data);
+
     setravintoladata(data);
   };
 
@@ -21,17 +22,35 @@ function App() {
 
   const fetchData2 = async () => {
     const response = await fetch(
-      `http://192.168.0.101:8000/api/restaurant/findbyid/${query}`
+      `http://192.168.1.156:8000/api/restaurant/findbyid/${query}`
     );
-    console.log(response);
+
     const data = await response.json();
-    console.log(data);
+
     setravintoladata(data);
+  };
+
+  const updateData = async () => {
+    const reqoptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      //body: { restaurant_id: query2 },
+      //body: JSON.stringify({ restaurant_id: query2 }),
+    };
+    console.log(reqoptions.body);
+    const response = await fetch(
+      `http://192.168.1.156:8000/api/restaurant/update/${query}/${query2}`,
+      reqoptions
+    );
+
+    const data = await response.json();
+
+    //setravintoladata(data);
   };
 
   const deleteData = async () => {
     const response = await fetch(
-      `http://192.168.0.101:8000/api/restaurant/delete/${query}`,
+      `http://192.168.1.156:8000/api/restaurant/delete/${query}`,
       { method: "DELETE" }
     );
     const data = await response.json();
@@ -51,6 +70,11 @@ function App() {
   const handleClick2 = (event) => {
     event.preventDefault();
     deleteData();
+  };
+
+  const handleClick3 = (event) => {
+    event.preventDefault();
+    updateData();
   };
 
   return (
@@ -73,6 +97,17 @@ function App() {
             />
           </div>
           <div className="form-group" id="group2">
+            <label id="label1">Restauraunt ID for update: </label>
+            <input
+              type="text"
+              value={query2}
+              onChange={(event) => setQuery2(event.target.value)}
+              className="form-control"
+              name="query2"
+              id="input2"
+            />
+          </div>
+          <div className="form-group" id="group2">
             <button type="submit" className="btn btn-primary" id="button1">
               Submit
             </button>
@@ -92,6 +127,14 @@ function App() {
             >
               Delete
             </button>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              id="button4"
+              onClick={handleClick3}
+            >
+              Update
+            </button>
           </div>
         </form>
       </div>
@@ -103,6 +146,7 @@ function App() {
               <th scope="col">Borough</th>
               <th scope="col">Cuisine</th>
               <th scope="col">ID</th>
+              <th scope="col">restaurant ID</th>
             </tr>
           </thead>
           <tbody>
